@@ -1,0 +1,29 @@
+{
+  "persons": [
+    {
+      "name": "Eino Ensimmäinen",
+      "number": "050-123456",
+      "id": 1
+    },
+    {
+      "name": "Taneli Toinen",
+      "number": "050-12356",
+      "id": 2
+    },
+    {
+      "name": "Kalle Kolmas",
+      "number": "050-123456",
+      "id": 3
+    },
+    {
+      "name": "Nelli Neljäs",
+      "number": "050-123456",
+      "id": 4
+    },
+    {
+      "name": "Viivi Viides",
+      "number": "050-123456",
+      "id": 5
+    }
+  ]
+}
