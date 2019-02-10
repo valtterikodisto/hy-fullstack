@@ -97,6 +97,9 @@ const App = () => {
           setNewNumber('')
           flashNotification(`Lisättiin ${returnedPerson.name}`)
         })
+        .catch(error => {
+          flashError(error.response.data.error)
+        })
 
     } else {
       const personOnList = persons.find(p => p.name.toLowerCase() === newName.toLocaleLowerCase())
