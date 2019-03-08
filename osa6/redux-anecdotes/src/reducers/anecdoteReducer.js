@@ -29,9 +29,28 @@ const reducer = (state = initialState, action) => {
       const changedAnecdote = { ...anecdoteToChange, votes: anecdoteToChange.votes + 1 }
       return state.map(anecdote => 
         anecdote.id !== action.data.id ? anecdote : changedAnecdote);
-
+    
+    case 'ADD':
+      return state.concat(action.data)
+    
     default:
       return state;
+  }
+}
+
+// Action creators
+
+export const voteAnecdote = (id) => {
+  return {
+    type: 'VOTE',
+    data: { id }
+  }
+}
+
+export const addAnecdote = (content) => {
+  return {
+    type: 'ADD',
+    data: { id: getId(), content, votes: 0 }
   }
 }
 
