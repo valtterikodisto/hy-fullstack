@@ -12,18 +12,9 @@ const AnecdoteList = (props) => {
     setTimeout(() => props.hideNotification(), 5000)
   }
 
-  const anecdotesToShow = () => {
-    if (!props.filter) {
-      return props.anecdotes
-    }
-    return props.anecdotes.filter(anecdote => {
-      return anecdote.content.toUpperCase().includes(props.filter.toUpperCase())
-    })
-  }
-
   return (
     <>
-    {anecdotesToShow().map(anecdote =>
+    {props.visibleAnecdotes.map(anecdote =>
       <div key={anecdote.id}>
         <div>
           {anecdote.content}
@@ -38,10 +29,20 @@ const AnecdoteList = (props) => {
   )
 }
 
+const anecdotesToShow = ({ anecdotes, filter }) => {
+  if (!filter) {
+    return anecdotes
+  }
+  return anecdotes.filter(anecdote => {
+    return anecdote.content.toUpperCase().includes(filter.toUpperCase())
+  })
+}
+
 const mapStateToProps = (state) => {
   return {
     anecdotes: state.anecdotes,
-    filter: state.filter
+    filter: state.filter,
+    visibleAnecdotes: anecdotesToShow(state)
   }
 }
 
