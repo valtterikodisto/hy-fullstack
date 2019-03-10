@@ -16,10 +16,18 @@ const notificationReducer = (state = initialState, action) => {
 
 // Action creators
 
-export const showNotification = (notification) => {
-  return {
-    type: 'SHOW',
-    notification
+export const showNotification = (notification, seconds) => {
+  return async dispatch => {
+    dispatch({
+      type: 'SHOW',
+      notification
+    })
+
+    setTimeout(() => {
+      dispatch({
+        type: 'HIDE'
+      })
+    }, seconds * 1000)
   }
 }
 
